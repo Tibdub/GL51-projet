@@ -4,8 +4,6 @@ class Student {
 
     String firstname
     String lastName
-
-    Student() {
-    }
+    
     //added !
 }

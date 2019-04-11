@@ -12,5 +12,6 @@ class StudentController {
     List<Student> index() {
         [new Student(firstName: "Sébastien", lastName: "Gadot")]
     }
+
 }
 

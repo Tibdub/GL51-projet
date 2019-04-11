@@ -2,7 +2,7 @@ package projet.gl51
 
 class Student {
 
-    String firstname
+    String firstName
     String lastName
 
     //added

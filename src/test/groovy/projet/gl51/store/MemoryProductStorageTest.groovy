@@ -1,6 +1,6 @@
 package projet.gl51.store
 
-//import projet.gl51.exeption.NotExistingProductException
+import projet.gl51.exception.NotExistingProductException
 import spock.lang.Specification
 
 
@@ -94,13 +94,13 @@ class MemoryProductStorageTest extends Specification {
 
     }
 
-    /*A Finir
+
     def "getting a product by its ID will throw NotExistingProductExeption if it does not exist"(){
         when:
         store.getByID("hvtfty55")
 
         then:
-        thrown new NotExistingProductException()
+        thrown NotExistingProductException
     }
-     */
+
 }

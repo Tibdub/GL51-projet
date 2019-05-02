@@ -1,5 +1,8 @@
 package projet.gl51.store
 
+import projet.gl51.exception.NotExistingProductException
+
+
 class MemoryProductStorage implements ProductStorage{
 
     // ajouter une liste privée
@@ -36,14 +39,12 @@ class MemoryProductStorage implements ProductStorage{
                 p_sortie.idealTemperature=list.get(i).idealTemperature
             }
         }
-        if(p_sortie!= null){
+        if(p_sortie.id != null){
             return  p_sortie
         }
         else{
-            //throw new NotExistingProductException()
-            return null
+            throw new NotExistingProductException()
         }
-
     }
 
     @Override

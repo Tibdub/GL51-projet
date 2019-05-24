@@ -25,7 +25,7 @@ class ProductControllerSpec extends Specification{
         response == []
     }
 
-
+/*
     void "test create"() {
         setup:
         Product product1 = new Product(name: "stylo", description: "bleu", price: 12, idealTemperature:23)
@@ -37,7 +37,7 @@ class ProductControllerSpec extends Specification{
         //Product findProduct = client.toBlocking().retrieve(HttpRequest.GET("/store/product/"+id), Argument.of(Product).type)
 
         then:
-        bla != null
-    }
+        bla != null*
+    }*/
 
 }

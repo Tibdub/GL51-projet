@@ -15,8 +15,6 @@ class MemoryProductStorageTest extends Specification {
     }
 
 
-
-
     def "adding a product returns the product in the list"() {
 
         setup:

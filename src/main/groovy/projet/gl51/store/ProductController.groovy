@@ -1,50 +1,93 @@
 package projet.gl51.store
 
-import io.micronaut.http.HttpResponse
+
 import io.micronaut.http.HttpStatus
 import io.micronaut.http.annotation.Body
 import io.micronaut.http.annotation.Controller
 import io.micronaut.http.annotation.Delete
 import io.micronaut.http.annotation.Get
+import io.micronaut.http.annotation.Patch
 import io.micronaut.http.annotation.Post
-import io.micronaut.http.annotation.Put
 
 
-@Controller("/store/product")
+import javax.inject.Inject
 
+
+@Controller("/product")
 class ProductController {
 
-    MemoryProductStorage storage = new MemoryProductStorage();
+    @Inject
+    ProductStorage inMemory
 
+
+    /**
+     * get all product
+     *
+     * @return a list of product
+     */
     @Get("/")
-    List<Product> index() {
-        storage.all()
+    List<Product> allProduct(){
+        inMemory.all()
     }
 
+
+    /**
+     * get a product by its id
+     * @param id
+     * @return a list of product
+     */
     @Get("/{id}")
-    Product get(String id) {
+    Product prodById(String id) {
         try {
-            storage.getByID(id)
-        } catch (NoSuchElementException ignored) {
-            null
+            return inMemory.getByID(id)
+        } catch (Exception e) {
+            e.printStackTrace()
+            HttpStatus.NOT_FOUND
+            return null
         }
     }
 
-    @Post("/")
-    String save(@Body Product productToSave) {
-        storage.save(productToSave)
+
+    /**
+     * save a product
+     * @param product
+     * @return string
+     */
+    @Post(uri ="/save" )
+    String save(@Body Product product){
+        inMemory.save(product)
     }
 
-    @Put("/{id}")
-    HttpStatus update(String id, @Body Product replacingProduct) {
-        storage.update(id, replacingProduct)
-        HttpStatus.OK
+
+    /**
+     * delete a product
+     * @param product
+     * @return string
+     */
+    @Delete(uri ="/{id}" )
+    HttpStatus delete(String id){
+        try {
+            inMemory.delete(id)
+            return HttpStatus.OK
+
+        } catch (Exception e) {
+            e.printStackTrace()
+            return HttpStatus.NOT_FOUND
+        }
+
     }
 
-    @Delete("/{id}")
-    HttpStatus delete(String id) {
-        storage.delete(id)
-        HttpStatus.OK
+
+    /**
+     * update a product
+     * @param product
+     * @return string
+     */
+    @Patch(uri ="/update" )
+    HttpStatus update(@Body Product product) {
+        inMemory.update(product.id,product)
+        return HttpStatus.OK
     }
+
 
 }

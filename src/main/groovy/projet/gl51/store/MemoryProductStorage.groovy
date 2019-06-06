@@ -1,5 +1,6 @@
 package projet.gl51.store
 
+import projet.gl51.exception.NotExistingProductException
 
 import javax.inject.Singleton
 

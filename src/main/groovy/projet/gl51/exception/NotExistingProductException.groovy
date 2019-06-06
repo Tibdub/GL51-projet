@@ -1,7 +1,8 @@
 package projet.gl51.exception
 
-class NotExistingProductException extends Exception{
-    NotExistingProductException(){
+class NotExistingProductException extends Exception {
+
+    NotExistingProductException(String message) {
 
     }
 
